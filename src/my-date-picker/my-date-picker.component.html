@@ -1,34 +1,34 @@
-<div class="mydp" [ngStyle]="{'width': getComponentWidth(), 'border': opts.inline ? 'none' : null}" #mydpEl>
+<div class="mydp" #mydpEl>
     <div class="selectiongroup" *ngIf="!opts.inline">
-        <input *ngIf="opts.showInputField" ngtype="text" class="selection" aria-label="Calendar input field" [attr.maxlength]="opts.dateFormat.length" [ngClass]="{'invaliddate': invalidDate&&opts.indicateInvalidDate}" placeholder="{{opts.showDateFormatPlaceholder?opts.dateFormat:opts.customPlaceholderTxt}}"
-                [ngStyle]="{'height': opts.height, 'line-height': opts.height, 'font-size': opts.selectionTxtFontSize, 'border': 'none', 'padding-right': selectionDayTxt.length>0&&opts.showClearDateBtn ? '60px' : '30px'}"
-                (keyup)="userDateInput($event)" [value]="selectionDayTxt" (blur)="lostFocusInput($event)" [disabled]="opts.componentDisabled" [readonly]="!opts.editableDateField" [required]="opts.inputValueRequired">
-        <span class="selbtngroup" [style.height]="opts.height">
+        <input *ngIf="opts.showInputField" ngtype="text" class="{{opts.inputClass}}" aria-label="Calendar input field" [attr.maxlength]="opts.dateFormat.length" [ngClass]="{'invaliddate': invalidDate&&opts.indicateInvalidDate}" placeholder="{{opts.showDateFormatPlaceholder?opts.dateFormat:opts.customPlaceholderTxt}}"
+                (keyup)="userDateInput($event)" [value]="selectionDayTxt" (focus)="openBtnClicked()" (blur)="lostFocusInput($event)" [disabled]="opts.componentDisabled" [readonly]="!opts.editableDateField" [required]="opts.inputValueRequired">
+        <span class="selbtngroup" *ngIf="opts.showClearDateBtn||!opts.openOnFocus">
             <button type="button" aria-label="Clear Date" class="btnclear" *ngIf="selectionDayTxt.length>0&&opts.showClearDateBtn" (click)="removeBtnClicked()" [ngClass]="{'btnclearenabled': !opts.componentDisabled, 'btncleardisabled': opts.componentDisabled, 'btnleftborder': opts.showInputField}" [disabled]="opts.componentDisabled">
-                <span class="icon icon-cross" [ngStyle]="{'line-height': opts.height}"></span>
+                <span class="icon icon-cross"></span>
             </button>
             <button type="button" aria-label="Open Calendar" class="btnpicker" (click)="openBtnClicked()" [ngClass]="{'btnpickerenabled': !opts.componentDisabled, 'btnpickerdisabled': opts.componentDisabled, 'btnleftborder': opts.showInputField||selectionDayTxt.length>0&&opts.showClearDateBtn}" [disabled]="opts.componentDisabled">
-                <span class="icon icon-calendar" [ngStyle]="{'line-height': opts.height}"></span>
+                <span class="icon icon-calendar"></span>
             </button>
         </span>
     </div>
-    <div class="selector" *ngIf="showSelector||opts.inline" [ngStyle]="{'bottom': getSelectorTopPosition()}" [ngClass]="{'inlinedp': opts.inline, 'alignselectorright': opts.alignSelectorRight, 'selectorarrow': opts.showSelectorArrow&&!opts.inline, 'selectorarrowleft': opts.showSelectorArrow&&!opts.alignSelectorRight&&!opts.inline, 'selectorarrowright': opts.showSelectorArrow&&opts.alignSelectorRight&&!opts.inline}">
+    <div class="selector" *ngIf="showSelector||opts.inline" [ngClass]="{'inlinedp': opts.inline, 'alignselectorright': opts.alignSelectorRight, 'selectorarrow': opts.showSelectorArrow&&!opts.inline, 'selectorarrowleft': opts.showSelectorArrow&&!opts.alignSelectorRight&&!opts.inline, 'selectorarrowright': opts.showSelectorArrow&&opts.alignSelectorRight&&!opts.inline}">
         <table class="header">
             <tr>
-                <td>
-                    <div style="float:left">
+                <td [ngClass]="{'full': !opts.showTodayBtn && !opts.showYearBtn}">
+                    <div>
                         <div class="headerbtncell"><button type="button" aria-label="Previous Month" class="headerbtn icon icon-left" (click)="prevMonth()"></button></div>
+                        <div class="headerbtncell"><button type="button" aria-label="Next Month" class="headerbtn icon icon-right" (click)="nextMonth()"></button></div>
                         <div class="headermonthtxt">
                             <input type="text" *ngIf="editMonth" class="monthinput" maxlength="10" inputFocus [value]="visibleMonth.monthTxt" (keyup)="userMonthInput($event)" (click)="$event.stopPropagation()" [ngClass]="{'invalidmonth': invalidMonth}">
-                            <button class="headerlabelbtn" type="button" [ngClass]="{'monthlabel': opts.editableMonthAndYear}" *ngIf="!editMonth" (click)="opts.editableMonthAndYear&&editMonthClicked($event)" tabindex="{{opts.editableMonthAndYear?'0':'-1'}}">{{visibleMonth.monthTxt}}</button>
+                            <button class="headerlabelbtn" type="button" [ngClass]="{'monthlabel': opts.editableMonthAndYear}" *ngIf="!editMonth" (click)="opts.editableMonthAndYear&&editMonthClicked($event)" tabindex="{{opts.editableMonthAndYear?'0':'-1'}}">{{visibleMonth.monthTxt}} {{visibleMonth.year}}</button>
                         </div>
-                        <div class="headerbtncell"><button type="button" aria-label="Next Month" class="headerbtn icon icon-right" (click)="nextMonth()"></button></div>
+
                     </div>
                 </td>
                 <td *ngIf="opts.showTodayBtn">
                     <button type="button" class="headertodaybtn" (click)="todayClicked()" [disabled]="disableTodayBtn" [ngClass]="{'headertodaybtnenabled': !disableTodayBtn, 'headertodaybtndisabled': disableTodayBtn}">{{opts.todayBtnTxt}}</button>
                 </td>
-                <td>
+                <td *ngIf="opts.showYearBtn">
                     <div style="float:right">
                         <div class="headerbtncell"><button type="button" aria-label="Previous Year" class="headerbtn icon icon-left" (click)="prevYear()"></button></div>
                         <div class="headeryeartxt">

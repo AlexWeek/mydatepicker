@@ -8,6 +8,7 @@ export interface IMyOptions {
     monthLabels?: IMyMonthLabels;
     dateFormat?: string;
     showTodayBtn?: boolean;
+    showYearBtn?: boolean;
     todayBtnTxt?: string;
     firstDayOfWeek?: string;
     sunHighlight?: boolean;
@@ -35,4 +36,6 @@ export interface IMyOptions {
     inputValueRequired?: boolean;
     showSelectorArrow?: boolean;
     showInputField?: boolean;
+    inputClass?: string;
+    openOnFocus?: boolean;
 }

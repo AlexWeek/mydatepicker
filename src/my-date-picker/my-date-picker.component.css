@@ -1,28 +1,21 @@
 .mydp {
-    min-width: 30px;
-    border-radius: 2px;
-    line-height: 1.1;
-    display: inline-block;
-    position: relative;
+    width:100%;
+    height:100%;
 }
 
 .mydp * {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: inherit;
     padding: 0;
     margin: 0;
 }
 
 .mydp .selector {
-    margin-top: 2px;
-    margin-left: -1px;
     position: absolute;
-    width: 252px;
+    width: 100%;
     padding: 1px;
-    border-radius: 2px;
-    background-color: #CCC;
     z-index: 100;
     animation: selectorfadein 0.1s;
 }
@@ -37,56 +30,16 @@
 }
 
 .mydp .selectorarrow {
-    background: #FAFAFA;
-    border: 1px solid #CCC;
-    margin-top: 12px;
-    padding: 0;
-}
-
-.mydp .selectorarrow:after,
-.mydp .selectorarrow:before {
-    bottom: 100%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-}
-
-.mydp .selectorarrow:after {
-    border-color: rgba(250, 250, 250, 0);
-    border-bottom-color: #FAFAFA;
-    border-width: 10px;
-    margin-left: -10px;
-}
-
-.mydp .selectorarrow:before {
-    border-color: rgba(204, 204, 204, 0);
-    border-bottom-color: #CCC;
-    border-width: 11px;
-    margin-left: -11px;
-}
-
-.mydp .selectorarrowleft:after,
-.mydp .selectorarrowleft:before {
-    left: 24px;
-}
-
-.mydp .selectorarrowright:after,
-.mydp .selectorarrowright:before {
-    left: 224px;
+    padding:15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 14px 40px -14px rgba(97,97,97,0.1);
+    -moz-box-shadow: 0px 14px 40px -14px rgba(97,97,97,0.1);
+    box-shadow: 0px 14px 40px -14px rgba(97,97,97,0.1);
 }
 
 .mydp .alignselectorright {
     right: -1px;
-}
-
-.mydp .selectiongroup {
-    position: relative;
-    display: table;
-    border: none;
-    border-spacing: 0;
-    background-color: #FFF;
 }
 
 .mydp .selection {
@@ -156,26 +109,13 @@
 
 .mydp .header {
     width: 100%;
-    height: 30px;
-    background-color: #FAFAFA;
+    height: 33px;
 }
 
 .mydp .header td {
     vertical-align: middle;
     border: none;
     line-height: 0;
-}
-
-.mydp .header td:nth-child(1) {
-    padding-left: 4px;
-}
-
-.mydp .header td:nth-child(2) {
-    text-align: center;
-}
-
-.mydp .header td:nth-child(3) {
-    padding-right: 4px;
 }
 
 .mydp .caltable {
@@ -189,29 +129,42 @@
 .mydp .weekdaytitle,
 .mydp .daycell {
     border-collapse: collapse;
-    color: #003366;
+    color: #575958;
     line-height: 1.1;
 }
 
-.mydp .weekdaytitle,
+.mydp .weekdaytitle{
+    padding: 20px 0 5px 0;
+    line-height:12px;
+}
+
 .mydp .daycell {
-    padding: 5px;
     text-align: center;
 }
 
 .mydp .weekdaytitle {
-    background-color: #DDD;
-    font-size: 12px;
-    font-weight: bold;
     vertical-align: middle;
     max-width: 36px;
     overflow: hidden;
+    font-weight: normal;
     white-space: nowrap;
+    font-size:12px;
+}
+
+.mydp tbody tr{
+    border-top:solid 1px #e6e6e6;
+    border-bottom:solid 1px #e6e6e6;
 }
 
 .mydp .daycell {
     cursor: pointer;
-    height: 30px;
+    height: 40px;
+    width: 40px;
+    border-right:solid 1px #e6e6e6;
+}
+
+.mydp .daycell:first-child{
+    border-left:solid 1px #e6e6e6;
 }
 
 .mydp .daycell div {
@@ -229,11 +182,11 @@
 }
 
 .mydp .prevmonth {
-    color: #CCC;
+    color: #dedede;
 }
 
 .mydp .nextmonth {
-    color: #CCC;
+    color: #dedede;
 }
 
 .mydp .disabled {
@@ -242,27 +195,21 @@
     background: #FBEFEF !important;
 }
 
-.mydp .sunday {
-    color: #C30000;
-}
-
 .mydp .sundayDim {
     opacity: 0.5;
 }
 
 .mydp .currmonth {
-    background-color: #F6F6F6;
-    font-weight: bold;
+    background-color: #fff;
 }
 
 .mydp .currday {
     text-decoration: underline;
 }
 
-.mydp .selectedday div {
-    border: 1px solid #004198;
-    background-color: #8EBFFF !important;
-    border-radius: 2px;
+.mydp .selectedday {
+    background: #fe6464;
+    color: #fff;
 }
 
 .mydp .selectmenu {
@@ -271,31 +218,45 @@
 }
 
 .mydp .headerbtncell {
-    background-color: #FAFAFA;
     display: table-cell;
     vertical-align: middle;
 }
 
+.mydp .full .headerbtncell{
+    width:14%;
+    height:33px;
+    border:solid 1px #dfe1e0;
+    border-radius: 2px;
+    float: right;
+    position:relative;
+}
+
+.mydp .full .headerbtncell:first-child{
+    float:left;
+}
+
+.mydp .full .headermonthtxt{
+    width: 72%;
+    max-width: 72%;
+    line-height: 33px;
+    display:block;
+}
+
 .mydp .headerbtn,
 .mydp .headerlabelbtn {
-    background: #FAFAFA;
+    background: transparent;
     border: none;
     height: 18px;
 }
 
 .mydp .headerbtn {
-    width: 16px;
+    width: 100%;
+    height: 100%;
 }
 
 .mydp .headerlabelbtn {
     font-size: 14px;
-}
-
-.mydp,
-.mydp .headertodaybtn,
-.mydp .monthinput,
-.mydp .yearinput {
-    border: 1px solid #CCC;
+    font-weight:bold;
 }
 
 .mydp .btnpicker,
@@ -305,7 +266,7 @@
 .mydp .headeryeartxt,
 .mydp .headertodaybtn,
 .mydp .selection {
-    color: #000;
+    color: #3f4042;
 }
 
 .mydp .headertodaybtn {
@@ -336,23 +297,6 @@
     white-space: nowrap;
 }
 
-.mydp .btnclear:focus,
-.mydp .btnpicker:focus,
-.mydp .headertodaybtn:focus {
-    background: #ADD8E6;
-}
-
-.mydp .headerbtn:focus,
-.mydp .monthlabel:focus,
-.mydp .yearlabel:focus {
-    color: #ADD8E6;
-    outline: none;
-}
-
-.mydp .daycell:focus {
-    outline: 1px solid #CCC;
-}
-
 .mydp .icon-calendar,
 .mydp .icon-cross {
     font-size: 16px;
@@ -380,17 +324,11 @@
     border: none;
 }
 
-.mydp .btnpickerenabled:hover,
-.mydp .btnclearenabled:hover,
-.mydp .headertodaybtnenabled:hover,
-.mydp .tablesingleday:hover {
-    background-color: #8BDAF4;
-}
-
 .mydp .headerbtn,
 .mydp .monthlabel,
 .mydp .yearlabel {
     cursor: pointer;
+    outline:none;
 }
 
 .mydp .yearinput,
@@ -401,12 +339,6 @@
     font-weight: bold;
     outline: none;
     border-radius: 2px;
-}
-
-.mydp .headerbtn:hover,
-.mydp .monthlabel:hover,
-.mydp .yearlabel:hover {
-    color: #8BDAF4;
 }
 
 @font-face {
@@ -437,8 +369,16 @@
 
 .mydp .icon-left:before {
     content: "\e605";
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-7px 0 0 -7px;
 }
 
 .mydp .icon-right:before {
     content: "\e607";
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-7px 0 0 -7px;
 }

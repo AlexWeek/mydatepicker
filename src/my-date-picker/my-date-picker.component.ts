@@ -66,7 +66,8 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         dayLabels: <IMyDayLabels> {},
         monthLabels: <IMyMonthLabels> {},
         dateFormat: <string> "",
-        showTodayBtn: <boolean> true,
+        showTodayBtn: <boolean> false,
+        showYearBtn: <boolean> false,
         todayBtnTxt: <string> "",
         firstDayOfWeek: <string> "",
         sunHighlight: <boolean> true,
@@ -76,11 +77,8 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         disableDays: <Array<IMyDate>> [],
         disableDateRange: <IMyDateRange> {begin: <IMyDate> {year: 0, month: 0, day: 0}, end: <IMyDate> {year: 0, month: 0, day: 0}},
         disableWeekends: <boolean> false,
-        height: <string> "34px",
-        width: <string> "100%",
-        selectionTxtFontSize: <string> "18px",
         inline: <boolean> false,
-        showClearDateBtn: <boolean> true,
+        showClearDateBtn: <boolean> false,
         alignSelectorRight: <boolean> false,
         openSelectorTopOfInput: <boolean> false,
         indicateInvalidDate: <boolean> true,
@@ -93,7 +91,9 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         componentDisabled: <boolean> false,
         inputValueRequired: <boolean> false,
         showSelectorArrow: <boolean> true,
-        showInputField: <boolean> true
+        showInputField: <boolean> true,
+        inputClass: <string> "",
+        openOnFocus: <boolean> true
     };
 
     constructor(public elem: ElementRef, private renderer: Renderer, private localeService: LocaleService, private validatorService: ValidatorService) {
@@ -126,24 +126,6 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         }
         if (this.opts.maxYear > this.MAX_YEAR) {
             this.opts.maxYear = this.MAX_YEAR;
-        }
-    }
-
-    getComponentWidth(): string {
-        if (this.opts.showInputField) {
-            return this.opts.width;
-        }
-        else if (this.selectionDayTxt.length > 0 && this.opts.showClearDateBtn) {
-            return "60px";
-        }
-        else {
-            return "30px";
-        }
-    }
-
-    getSelectorTopPosition(): string {
-        if (this.opts.openSelectorTopOfInput) {
-            return this.mydpEl.nativeElement.offsetHeight + "px";
         }
     }
 
