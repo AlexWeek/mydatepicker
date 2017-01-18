@@ -1,7 +1,7 @@
 <div class="mydp" #mydpEl>
     <div class="selectiongroup" *ngIf="!opts.inline">
         <input *ngIf="opts.showInputField" ngtype="text" class="{{opts.inputClass}}" aria-label="Calendar input field" [attr.maxlength]="opts.dateFormat.length" [ngClass]="{'invaliddate': invalidDate&&opts.indicateInvalidDate}" placeholder="{{opts.showDateFormatPlaceholder?opts.dateFormat:opts.customPlaceholderTxt}}"
-                (keyup)="userDateInput($event)" [value]="selectionDayTxt" (focus)="openBtnClicked()" (blur)="lostFocusInput($event)" [disabled]="opts.componentDisabled" [readonly]="!opts.editableDateField" [required]="opts.inputValueRequired">
+                (keyup)="userDateInput($event)" [value]="selectionDayTxt" (focus)="openBtnClicked()" (blur)="lostFocusInput($event)" [disabled]="disabled " [readonly]="!opts.editableDateField" [required]="opts.inputValueRequired">
         <span class="selbtngroup" *ngIf="opts.showClearDateBtn||!opts.openOnFocus">
             <button type="button" aria-label="Clear Date" class="btnclear" *ngIf="selectionDayTxt.length>0&&opts.showClearDateBtn" (click)="removeBtnClicked()" [ngClass]="{'btnclearenabled': !opts.componentDisabled, 'btncleardisabled': opts.componentDisabled, 'btnleftborder': opts.showInputField}" [disabled]="opts.componentDisabled">
                 <span class="icon icon-cross"></span>

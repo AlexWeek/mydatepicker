@@ -29,6 +29,7 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
     @Input() locale: string;
     @Input() defaultMonth: string;
     @Input() selDate: string;
+    @Input() disabled: boolean;
     @Output() dateChanged: EventEmitter<Object> = new EventEmitter();
     @Output() inputFieldChanged: EventEmitter<Object> = new EventEmitter();
     @Output() calendarViewChanged: EventEmitter<Object> = new EventEmitter();
